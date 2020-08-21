@@ -5,7 +5,6 @@ const TouchableItem = ({style, content}) => {
     const touchableStyle = style ? style : styles.item
     if(Platform.OS === 'android'){
         return (
-
             <TouchableNativeFeedback style={touchableStyle}>
               <TouchableOpacity> {content} </TouchableOpacity>
             </TouchableNativeFeedback>
