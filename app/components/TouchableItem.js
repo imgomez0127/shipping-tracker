@@ -1,21 +1,23 @@
 import React from 'react';
-import { Platform, StyleSheet, Text, TouchableOpacity, TouchableNativeFeedback } from 'react-native'
+import { Platform, StyleSheet, Text, TouchableOpacity, TouchableNativeFeedback, View} from 'react-native'
 
 const TouchableItem = ({style, content}) => {
-    const touchableStyle = style ? style : styles.item
-    if(Platform.OS === 'android'){
-        return (
-            <TouchableNativeFeedback style={touchableStyle}>
-              <TouchableOpacity> {content} </TouchableOpacity>
-            </TouchableNativeFeedback>
-        )
-    }
-    else{
-        return <TouchableOpacity style={touchableStyle}> {content} </TouchableOpacity>
-    }
+    let touchableStyle = style ? style : styles.item;
+    return (
+        <View style={touchableStyle}>
+          <TouchableOpacity>
+            <Text> {content} </Text>
+          </TouchableOpacity>
+        </View>
+    )
 }
 
-const style = StyleSheet.create({
-   item : {}
+const styles = StyleSheet.create({
+   item : {
+       padding: 10,
+       alignItems: 'center',
+       justifyContent: 'center',
+       borderWidth: 1,
+   }
 })
 export default TouchableItem

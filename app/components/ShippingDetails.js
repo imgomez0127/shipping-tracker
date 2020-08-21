@@ -20,9 +20,7 @@ class ShippingDetails  extends Component {
     constructor(props) {
         super(props);
         let tracking_info = get_tracking_info(this.props.tracking_number);
-        console.log(tracking_info)
         this.state = {name:this.props.name, ...tracking_info};
-        console.log(this.state);
     }
 
     render(){
@@ -32,7 +30,7 @@ class ShippingDetails  extends Component {
               <Text>Tracking Number: {this.state.tracking_number}</Text>
               <Text>Expected Arrival: {this.state.expected_arrival}</Text>
               <Text>Current Location: {this.state.cur_location}</Text>
-            <Text>Shipping Status: {this.state.delivered ? "Delivered" : "Shipping"}</Text>
+              <Text>Shipping Status: {this.state.delivered ? "Delivered" : "Shipping"}</Text>
             </View>
         )
     }
