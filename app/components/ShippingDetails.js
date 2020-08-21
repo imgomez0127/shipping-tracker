@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 
 class ShippingDetails  extends Component {
     constructor(props) {
@@ -8,11 +8,20 @@ class ShippingDetails  extends Component {
 
     render(){
         return (
-            <View style={{flex:1}}>
+            <View style={styles.container}>
               <Text>Insert Shipping details here</Text>
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default ShippingDetails
