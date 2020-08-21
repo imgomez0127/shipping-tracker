@@ -7,10 +7,9 @@ const get_tracking_info = (tracking_number) => {
     let test =
     {
         tracking_number : tracking_number,
-        delivered : false,
+        delivered: Math.floor(Math.random()*2),
         expected_arrival : test_date.join("/"),
         cur_location : "123 Random Address",
-        delivered: false
     };
     return test;
 
