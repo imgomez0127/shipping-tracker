@@ -6,7 +6,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <ShippingDetails/>
+      <ShippingDetails tracking_number="123456" name="Urban Outfitters"/>
     </View>
   );
 }
