@@ -7,9 +7,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <View style={styles.test}>
-        <TouchableItem content="This is content"/>
-      </View>
+      <ShippingDetails name="Urban Outfitters"
+                       tracking_code="EZ4000000004"
+                       carrier="UPS"/>
     </View>
   );
 }
@@ -21,9 +21,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  test: {
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
 });

@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import pkg from '../libs/EasyPost.js'
-const { api } = pkg;
+const { request_tracker , apiKey } = pkg;
 
 const get_tracking_info = async ({tracking_code, carrier}) => {
-  let tracker = api.Tracker({tracking_code: tracking_code, carrier: carrier});
-  let tracking_info = await tracker.save();
-  return tracking_info
+  let tracker = request_tracker({tracking_code: tracking_code, carrier: carrier});
+  let tracking_info = tracker.then((response) => response.json());
+  return tracking_info.then((data) => data)
 }
 
 const parse_display_info = (tracking_info) => {
   let { status, est_delivery_date } = tracking_info;
-  let { city, country, state, zip } = tracking_info.tracking_details[0];
-  let cur_location = [city, state, zip, county].join(" ");
+  let track_len = tracking_info.tracking_details.length;
+  let { city, country, state, zip } = tracking_info.tracking_details[track_len-1].tracking_location;
+  let cur_location = [city, state, zip, country].join(" ");
+  console.log("AWNIODNAWOIDNIOAWNDIOA")
   return {
     status,
     cur_location,
@@ -41,7 +43,7 @@ class ShippingDetails  extends Component {
       tracking_code: this.props.tracking_code
     };
     let tracking_info = await get_tracking_info(shipping_info);
-    let display_info = parse_tracking_info(tracking_info);
+    let display_info = parse_display_info(tracking_info);
     let new_state = {...this.state, ...display_info};
     this.setState(new_state)
   }
