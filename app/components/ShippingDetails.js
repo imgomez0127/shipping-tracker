@@ -12,7 +12,6 @@ const get_tracking_info = (tracking_number) => {
         cur_location : "123 Random Address",
     };
     return test;
-
 }
 
 class ShippingDetails  extends Component {

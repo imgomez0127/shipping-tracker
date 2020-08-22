@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StyleSheet, Text, TouchableOpacity, TouchableNativeFeedback, View} from 'react-native'
+import { Platform, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 
 const TouchableItem = ({style, content}) => {
     let touchableStyle = style ? style : styles.item;
