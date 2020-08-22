@@ -12,7 +12,8 @@ const get_tracking_info = async ({tracking_code, carrier}) => {
 const parse_display_info = (tracking_info) => {
   let { status, est_delivery_date } = tracking_info;
   let track_len = tracking_info.tracking_details.length;
-  let { city, country, state, zip } = tracking_info.tracking_details[track_len-1].tracking_location;
+  let checkIn = tracking_info.tracking_details[track_len-1].tracking_location;
+  let { city, country, state, zip } = latest_check;
   let cur_location = [city, state, zip, country].join(" ");
   return {
     status,
