@@ -14,7 +14,6 @@ const parse_display_info = (tracking_info) => {
   let track_len = tracking_info.tracking_details.length;
   let { city, country, state, zip } = tracking_info.tracking_details[track_len-1].tracking_location;
   let cur_location = [city, state, zip, country].join(" ");
-  console.log("AWNIODNAWOIDNIOAWNDIOA")
   return {
     status,
     cur_location,
