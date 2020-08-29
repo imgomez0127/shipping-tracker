@@ -12,9 +12,9 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="AddShipment">
-        <Stack.Screen name="ShippingDetails" component={ShippingDetails}/>
-        <Stack.Screen name="AddShipment" component={AddShipment}/>
+      <Stack.Navigator initialRouteName="Add a Shipment">
+        <Stack.Screen name="ShippingDetails" component={ShippingDetails} options={{"title":"Details"}}/>
+        <Stack.Screen name="Add a Shipment" component={AddShipment} option={{"title":"Add a Shipment"}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

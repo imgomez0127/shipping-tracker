@@ -13,7 +13,7 @@ const parse_display_info = (tracking_info) => {
   let { status, est_delivery_date } = tracking_info;
   let track_len = tracking_info.tracking_details.length;
   let checkIn = tracking_info.tracking_details[track_len-1].tracking_location;
-  let { city, country, state, zip } = latest_check;
+  let { city, country, state, zip } = checkIn;
   let cur_location = [city, state, zip, country].join(" ");
   return {
     status,
@@ -30,17 +30,18 @@ class ShippingDetails  extends Component {
 
   constructor(props) {
     super(props);
+    this.routeParams = this.props.route.params;
     this.state = {
-      name:this.props.name,
-      tracking_code: this.props.tracking_code,
-      carrier:this.props.carrier
+      name: this.routeParams.name,
+      tracking_code: this.routeParams.tracking_code,
+      carrier: this.routeParams.carrier
     };
   }
 
   async componentDidMount() {
     let shipping_info = {
-      carrier:this.props.carrier,
-      tracking_code: this.props.tracking_code
+      carrier:this.routeParams.carrier,
+      tracking_code: this.routeParams.tracking_code
     };
     let tracking_info = await get_tracking_info(shipping_info);
     let display_info = parse_display_info(tracking_info);
