@@ -1,17 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import ShippingDetails from './components/ShippingDetails.js'
-import TouchableItem from './components/TouchableItem.js'
+import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import ShippingDetails from './components/ShippingDetails.js';
+import AddShipment from './components/AddShipment.js'
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <ShippingDetails name="Urban Outfitters"
-                       tracking_code="EZ4000000004"
-                       carrier="UPS"/>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="AddShipment">
+        <Stack.Screen name="ShippingDetails" component={ShippingDetails}/>
+        <Stack.Screen name="AddShipment" component={AddShipment}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 

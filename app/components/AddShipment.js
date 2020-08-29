@@ -1,7 +1,7 @@
 import React, { useState }from 'react'
-import { StyleSheet, View, Text, TextInput} from 'react-native'
-
+import { Button, StyleSheet, View, Text, TextInput} from 'react-native'
 const AddShipment = (props) => {
+    { navigation } = props;
     let [name, setName] = useState("");
     let [trackingCode, setTrackingCode] = useState("");
     let [carrier, setCarrier] = useState("");
@@ -19,6 +19,12 @@ const AddShipment = (props) => {
           <TextInput style={styles.input}
                      onChangeText={text => setCarrier(text)}
                      value={carrier}/>
+          let testDetails = { 
+              name: "Urban Outfitters",
+              tracking_code: "EZ4000000004",
+              carrier: "UPS"
+          }
+          <Button title="Goto Details" onPress={() => navigation.navigate('ShippingDetails', testDetails)}/>
         </View>
 
     )
