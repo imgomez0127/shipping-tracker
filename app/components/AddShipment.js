@@ -57,12 +57,15 @@ const AddShipment = (props) => {
       <TextInput style={styles.input}
                  onChangeText={text => setCarrier(text)}
                  value={carrier}/>
-
-      <Button title="Add Shipment" onPress={() => {
-        newShipment = {name, tracking_code: trackingCode, carrier};
-        test(newShipment);
-      }}/>
-      <Button title="Goto Details" onPress={() => navigation.navigate('ShippingDetails', testDetails)}/>
+      <View style={styles.button}>
+        <Button title="Add Shipment" onPress={() => {
+          let newShipment = {name, tracking_code: trackingCode, carrier};
+          test(newShipment);
+        }}/>
+      </View>
+      <View style={styles.button}>
+        <Button title="Goto Details" onPress={() => navigation.navigate('ShippingDetails', testDetails)}/>
+      </View>
     </View>
   )
 }
@@ -76,8 +79,15 @@ const styles = StyleSheet.create({
     },
     input: {
         height: 40,
+        width: 200,
         borderColor: 'gray',
-        borderWidth: 1
+        borderWidth: 1,
+        marginBottom: 20,
+        borderRadius: 5
+    },
+    button: {
+        width: 100,
+        marginBottom: 20
     }
 });
 

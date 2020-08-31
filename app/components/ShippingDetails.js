@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
+import ld from 'lodash';
 import pkg from '../libs/EasyPost.js'
 const { request_tracker , apiKey } = pkg;
 
@@ -11,14 +12,20 @@ const get_tracking_info = async ({tracking_code, carrier}) => {
 
 const parse_display_info = (tracking_info) => {
   let { status, est_delivery_date } = tracking_info;
+  status = ld.startCase(ld.toLower(status))
+  est_delivery_date = new Date(est_delivery_date);
+  let expected_arrival = [est_delivery_date.getMonth(),
+                          est_delivery_date.getDate(),
+                          est_delivery_date.getFullYear()].join("/")
   let track_len = tracking_info.tracking_details.length;
   let checkIn = tracking_info.tracking_details[track_len-1].tracking_location;
   let { city, country, state, zip } = checkIn;
+  city = ld.startCase(ld.toLower(city))
   let cur_location = [city, state, zip, country].join(" ");
   return {
     status,
     cur_location,
-    expected_arrival: est_delivery_date,
+    expected_arrival,
     city,
     country,
     state,
