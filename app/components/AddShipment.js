@@ -1,5 +1,5 @@
 import React, { useState }from 'react'
-import { Button, StyleSheet, View, Text, TextInput} from 'react-native'
+import { Button, StyleSheet, View, Text, TextInput } from 'react-native'
 import rnfs from 'react-native-fs'
 
 var shipmentsPath = rnfs.DocumentDirectoryPath + '/shipments.json';
@@ -13,7 +13,7 @@ const loadShipmentDetails = async () => {
                           if(statResult[0].isFile){
                             return rnfs.readFile(statResult[1], 'utf8')
                           }
-                          return "{}"
+                          return "[]"
                         });
   shipmentsText = await shipmentsText;
   return JSON.parse(shipmentsText);
